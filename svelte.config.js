@@ -23,7 +23,8 @@ const config = {
 		alias: {
 			'@shared': 'src/shared',
 			'@components': 'src/components',
-			'@translations': 'src/translations'
+			'@translations': 'src/translations',
+			'@config': 'src/config'
 		}
 	}
 };

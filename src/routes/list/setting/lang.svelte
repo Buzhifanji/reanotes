@@ -19,7 +19,7 @@
 		'English';
 </script>
 
-<div class="dropdown dropdown-bottom">
+<div class="dropdown dropdown-bottom w-32">
 	<div tabindex="0" role="button" class="flex gap-3 items-center font-semibold">
 		<span>{langName}</span>
 		<ChevronDown class="h-4 w-4" />

@@ -1,8 +1,10 @@
 <script>
+	import { initThem } from '@config';
 	import { initLang } from '@translations';
 	import './styles.css';
 
 	initLang();
+	initThem();
 </script>
 
 <div class="app">

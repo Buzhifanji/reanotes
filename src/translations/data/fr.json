@@ -5,5 +5,6 @@
   "book": "livres",
   "article": "Liste des articles",
   "setting": "installation",
-  "language": "langue"
+  "language": "langue",
+  "theme": "thème"
 }
