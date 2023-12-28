@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { t } from '@translations';
-	import Lang from '../lang.svelte';
+	import Lang from './lang.svelte';
 </script>
 
 <svelte:head>
