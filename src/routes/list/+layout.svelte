@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import RouterTransition from '@components/transition/router.svelte';
 	import { getPathName } from '@shared';
 	import { BookText, Newspaper } from 'lucide-svelte';
 
@@ -29,6 +30,8 @@
 	</aside>
 
 	<section class="flex flex-1">
-		<slot />
+		<RouterTransition>
+			<slot />
+		</RouterTransition>
 	</section>
 </main>
