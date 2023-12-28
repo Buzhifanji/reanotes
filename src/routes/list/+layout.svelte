@@ -2,16 +2,17 @@
 	import { page } from '$app/stores';
 	import RouterTransition from '@components/transition/router.svelte';
 	import { getPathName } from '@shared';
-	import { BookText, Newspaper } from 'lucide-svelte';
+	import { BookText, Newspaper, Settings } from 'lucide-svelte';
 
 	const bookPath = '/list/book-list';
 	const articlePath = '/list/article-list';
+	const settingPath = '/list/setting';
 </script>
 
 <main class="h-screen w-full flex">
-	<aside>
+	<aside class="flex flex-col justify-between bg-base-200">
 		<nav>
-			<ul class="menu bg-base-200 rounded-box h-screen gap-4">
+			<ul class="menu rounded-box gap-4">
 				<!-- <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 					<a href="/">首页</a>
 				</li> -->
@@ -27,6 +28,13 @@
 				</li>
 			</ul>
 		</nav>
+		<ul class="menu rounded-box gap-4">
+			<li aria-current={getPathName($page.url.pathname, settingPath)}>
+				<a href={settingPath}>
+					<Settings />
+				</a>
+			</li>
+		</ul>
 	</aside>
 
 	<section class="flex flex-1">
