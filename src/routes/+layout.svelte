@@ -1,8 +1,8 @@
 <script>
+	import { initLang } from '@translations';
 	import './styles.css';
 
-	// goto('/list/book-list');
-	// export const load = () => redirect(302, '/list/book-list');
+	initLang();
 </script>
 
 <div class="app">

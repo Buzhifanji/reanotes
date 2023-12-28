@@ -8,6 +8,12 @@ const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
 	// preprocess: vitePreprocess(),
+	onwarn: (warning, handler) => {
+		if (warning.code.startsWith('a11y-')) {
+			return;
+		}
+		handler(warning);
+	},
 	preprocess: sequence([vitePreprocess(), preprocessMeltUI()]),
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
@@ -16,7 +22,8 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			'@shared': 'src/shared',
-			'@components': 'src/components'
+			'@components': 'src/components',
+			'@translations': 'src/translations'
 		}
 	}
 };
