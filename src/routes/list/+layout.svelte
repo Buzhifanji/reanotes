@@ -2,11 +2,12 @@
 	import { page } from '$app/stores';
 	import RouterTransition from '@components/transition/router.svelte';
 	import { getPathName } from '@shared';
-	import { BookText, Newspaper, Settings } from 'lucide-svelte';
+	import { BookOpen, Newspaper, Settings } from 'lucide-svelte';
 
 	const bookPath = '/list/book-list';
 	const articlePath = '/list/article-list';
 	const settingPath = '/list/setting';
+	const tooltipClass = 'tooltip tooltip-right tooltip-accent';
 </script>
 
 <main class="h-screen w-full flex">
@@ -17,12 +18,12 @@
 					<a href="/">首页</a>
 				</li> -->
 				<li aria-current={getPathName($page.url.pathname, bookPath)}>
-					<a href={bookPath}>
-						<BookText />
+					<a href={bookPath} class={tooltipClass} data-tip="书籍列表">
+						<BookOpen />
 					</a>
 				</li>
 				<li aria-current={getPathName($page.url.pathname, articlePath)}>
-					<a href={articlePath}>
+					<a href={articlePath} class={tooltipClass} data-tip="文章列表">
 						<Newspaper />
 					</a>
 				</li>
@@ -30,7 +31,7 @@
 		</nav>
 		<ul class="menu rounded-box gap-4">
 			<li aria-current={getPathName($page.url.pathname, settingPath)}>
-				<a href={settingPath}>
+				<a href={settingPath} class={tooltipClass} data-tip="设置">
 					<Settings />
 				</a>
 			</li>
