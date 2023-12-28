@@ -1,0 +1,1 @@
+export const getPathName = (pathname: string, path: string) => pathname === path ? 'page' : undefined;
