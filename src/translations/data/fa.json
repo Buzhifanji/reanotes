@@ -2,5 +2,9 @@
   "__name": "فارسی",
   "__code": "FA",
   "__direction": "rtl",
-  "__status": "beta"
+  "__status": "beta",
+  "book": "کتاب ها",
+  "article": "لیست مقاله",
+  "setting": "برپایی",
+  "language": "زبان"
 }

@@ -2,5 +2,9 @@
   "__name": "عربي",
   "__code": "AR",
   "__direction": "rtl",
-  "__status": "beta"
+  "__status": "beta",
+  "book": "كتب",
+  "article": "قائمة المقالات",
+  "setting": "يثبت",
+  "language": "لغة"
 }

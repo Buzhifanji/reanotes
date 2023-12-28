@@ -2,5 +2,9 @@
   "__name": "Français",
   "__code": "FR",
   "__direction": "ltr",
-  "__status": ""
+  "__status": "",
+  "book": "livres",
+  "article": "Liste des articles",
+  "setting": "installation",
+  "language": "langue"
 }

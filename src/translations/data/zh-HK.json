@@ -1,6 +1,10 @@
 {
-  "__name": "中文",
+  "__name": "繁體中文",
   "__code": "ZH-HK",
   "__direction": "ltr",
-  "__status": ""
+  "__status": "",
+  "book": "書籍",
+  "article": "文章列表",
+  "setting": "設定",
+  "language": "語言"
 }

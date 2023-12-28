@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '@translations';
 	import Lang from '../lang.svelte';
 </script>
 
@@ -9,7 +10,7 @@
 <div class="container mx-auto">
 	<ul class="menu">
 		<li class="flex-row justify-around items-center">
-			<span class="label-text">语言</span>
+			<span class="label-text">{$t('lang.language')}</span>
 			<Lang />
 		</li>
 	</ul>

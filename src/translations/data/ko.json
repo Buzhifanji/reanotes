@@ -2,5 +2,9 @@
   "__name": "한국어",
   "__code": "KO",
   "__direction": "ltr",
-  "__status": ""
+  "__status": "",
+  "book": "서적",
+  "article": "기사 목록",
+  "setting": "설정",
+  "language": "언어"
 }

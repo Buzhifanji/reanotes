@@ -2,5 +2,9 @@
   "__name": "Indonesia",
   "__code": "ID",
   "__direction": "ltr",
-  "__status": ""
+  "__status": "",
+  "book": "buku",
+  "article": "Daftar artikel",
+  "setting": "mempersiapkan",
+  "language": "bahasa"
 }

@@ -19,12 +19,12 @@
 					<a href="/">首页</a>
 				</li> -->
 				<li aria-current={getPathName($page.url.pathname, bookPath)}>
-					<a href={bookPath} class={tooltipClass} data-tip={$t('lang.artilceList')}>
+					<a href={bookPath} class={tooltipClass} data-tip={$t('lang.book')}>
 						<BookOpen />
 					</a>
 				</li>
 				<li aria-current={getPathName($page.url.pathname, articlePath)}>
-					<a href={articlePath} class={tooltipClass} data-tip="文章列表">
+					<a href={articlePath} class={tooltipClass} data-tip={$t('lang.article')}>
 						<Newspaper />
 					</a>
 				</li>
@@ -32,7 +32,7 @@
 		</nav>
 		<ul class="menu rounded-box gap-4">
 			<li aria-current={getPathName($page.url.pathname, settingPath)}>
-				<a href={settingPath} class={tooltipClass} data-tip="设置">
+				<a href={settingPath} class={tooltipClass} data-tip={$t('lang.setting')}>
 					<Settings />
 				</a>
 			</li>

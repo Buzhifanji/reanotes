@@ -2,5 +2,9 @@
   "__name": "Polski",
   "__code": "PL",
   "__direction": "ltr",
-  "__status": ""
+  "__status": "",
+  "book": "książki",
+  "article": "Lista artykułów",
+  "setting": "organizować coś",
+  "language": "język"
 }

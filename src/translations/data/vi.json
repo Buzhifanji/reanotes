@@ -2,5 +2,9 @@
   "__name": "Vietnamese",
   "__code": "VI",
   "__direction": "ltr",
-  "__status": ""
+  "__status": "",
+  "book": "sách",
+  "article": "Danh sách bài viết",
+  "setting": "cài đặt",
+  "language": "ngôn ngữ"
 }
