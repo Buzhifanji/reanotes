@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import RouterTransition from '@components/transition/router.svelte';
 	import { getPathName } from '@shared';
+	import { t } from '@translations';
 	import { BookOpen, Newspaper, Settings } from 'lucide-svelte';
 
 	const bookPath = '/list/book-list';
@@ -18,7 +19,7 @@
 					<a href="/">首页</a>
 				</li> -->
 				<li aria-current={getPathName($page.url.pathname, bookPath)}>
-					<a href={bookPath} class={tooltipClass} data-tip="书籍列表">
+					<a href={bookPath} class={tooltipClass} data-tip={$t('lang.artilceList')}>
 						<BookOpen />
 					</a>
 				</li>

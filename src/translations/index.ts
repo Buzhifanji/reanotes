@@ -24,7 +24,7 @@ Object.entries(translations).map(([path, value]) => {
 
 const loaders = fileNames.map(name => ({
   locale: name,
-  key: name,
+  key: 'lang',
   loader: async () => (await import(`./data/${name}.json`)).default,
 }))
 
