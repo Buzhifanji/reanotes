@@ -10,12 +10,12 @@
 
 <main class="flex flex-col flex-1">
 	<Header>
-		<span>文章列表</span>
+		<span>书籍列表</span>
 	</Header>
 	<section class="flex-1">
 		<div class="text-column">
-			<p>文章列表</p>
+			<p>书籍列表</p>
 		</div>
 	</section>
 </main>
-<ListAside />
+<ListAside>侧边栏</ListAside>
