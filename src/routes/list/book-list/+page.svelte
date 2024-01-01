@@ -1,8 +1,21 @@
+<script lang="ts">
+	import ListAside from '@components/layout/list-aside.svelte';
+	import Header from '@components/layout/list-header.svelte';
+</script>
+
 <svelte:head>
 	<title>About</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="text-column">
-	<h1>书籍列表</h1>
-</div>
+<main class="flex flex-col flex-1">
+	<Header>
+		<span>文章列表</span>
+	</Header>
+	<section class="flex-1">
+		<div class="text-column">
+			<p>文章列表</p>
+		</div>
+	</section>
+</main>
+<ListAside />
