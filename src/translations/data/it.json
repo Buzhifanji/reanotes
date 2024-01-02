@@ -6,5 +6,6 @@
   "article": "Elenco articoli",
   "setting": "impostare",
   "language": "lingua",
-  "theme": "tema"
+  "theme": "tema",
+  "readFileError": "Errore durante la lettura del file!"
 }

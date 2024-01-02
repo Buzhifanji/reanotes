@@ -6,5 +6,6 @@
   "article": "Articles",
   "setting": "set up",
   "language": "language",
-  "theme": "theme"
+  "theme": "theme",
+  "readFileError": "Error reading file!"
 }

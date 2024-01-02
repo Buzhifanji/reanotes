@@ -6,5 +6,6 @@
   "article": "لیست مقاله",
   "setting": "برپایی",
   "language": "زبان",
-  "theme": "موضوع"
+  "theme": "موضوع",
+  "readFileError": "خطا در خواندن فایل!"
 }

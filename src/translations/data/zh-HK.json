@@ -6,5 +6,6 @@
   "article": "文章",
   "setting": "設定",
   "language": "語言",
-  "theme": "主題"
+  "theme": "主題",
+  "readFileError": "讀取文件錯誤！"
 }

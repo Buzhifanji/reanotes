@@ -6,5 +6,6 @@
   "article": "Senarai artikel",
   "setting": "sediakan",
   "language": "bahasa",
-  "theme": "tema"
+  "theme": "tema",
+  "readFileError": "Ralat membaca fail!"
 }

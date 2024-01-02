@@ -6,5 +6,6 @@
   "article": "Daftar artikel",
   "setting": "mempersiapkan",
   "language": "bahasa",
-  "theme": "tema"
+  "theme": "tema",
+  "readFileError": "Kesalahan saat membaca berkas!"
 }

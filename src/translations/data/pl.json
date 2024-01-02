@@ -6,5 +6,6 @@
   "article": "Lista artykułów",
   "setting": "organizować coś",
   "language": "język",
-  "theme": "temat"
+  "theme": "temat",
+  "readFileError": "Błąd odczytu pliku!"
 }

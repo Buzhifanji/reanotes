@@ -6,5 +6,6 @@
   "article": "기사 목록",
   "setting": "설정",
   "language": "언어",
-  "theme": "주제"
+  "theme": "주제",
+  "readFileError": "파일을 읽는 중 오류가 발생했습니다!"
 }

@@ -3,6 +3,7 @@
 	import Header from '@components/layout/list-header.svelte';
 	import { addToast } from '@components/toast/toaster.svelte';
 	import { readChunkFile } from '@shared';
+	import { t } from '@translations';
 	import { Upload } from 'lucide-svelte';
 
 	let fileInput: HTMLInputElement;
@@ -17,17 +18,15 @@
 			readChunkFile(files[0])
 				.then((val) => {
 					console.log('val', val);
-					addToast({
-						data: {
-							title: 'Success',
-							description: 'The resource was created!',
-							color: 'info'
-						},
-						closeDelay: 0
-					});
 				})
 				.catch((err) => {
-					console.log('err', err);
+					addToast({
+						data: {
+							title: $t('lang.readFileError'),
+							description: err,
+							color: 'error'
+						}
+					});
 				})
 				.finally(() => {
 					loading = false;

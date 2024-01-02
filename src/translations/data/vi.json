@@ -6,5 +6,6 @@
   "article": "Danh sách bài viết",
   "setting": "cài đặt",
   "language": "ngôn ngữ",
-  "theme": "chủ đề"
+  "theme": "chủ đề",
+  "readFileError": "Lỗi đọc tập tin!"
 }

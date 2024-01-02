@@ -6,5 +6,6 @@
   "article": "Список статей",
   "setting": "настраивать",
   "language": "язык",
-  "theme": "тема"
+  "theme": "тема",
+  "readFileError": "Ошибка чтения файла!"
 }
