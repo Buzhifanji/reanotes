@@ -6,3 +6,9 @@ body {
 	min-height: 100vh;
 	margin: 0;
 }
+
+@layer components {
+	.ellipsis {
+		@apply whitespace-nowrap text-ellipsis overflow-hidden;
+	}
+}

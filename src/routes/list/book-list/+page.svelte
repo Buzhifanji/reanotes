@@ -2,14 +2,17 @@
 	import ListAside from '@components/layout/list-aside.svelte';
 	import Header from '@components/layout/list-header.svelte';
 	import { addToast } from '@components/toast/toaster.svelte';
-	import { bookDB } from '@database';
-	import { readChunkFile } from '@shared';
+	import { bookDB, type Book } from '@database';
+	import { getFilename, readChunkFile } from '@shared';
 	import { t } from '@translations';
 	import { Upload } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
 	let fileInput: HTMLInputElement;
 	const fileType = '.pdf'; // 文件类型
 	let loading = false;
+	let books: Book[] = [];
+	let activeIndex = 0;
 
 	async function addBook(file: File, content: Uint8Array) {
 		try {
@@ -97,6 +100,17 @@
 		if (loading) return;
 		fileInput?.click();
 	}
+
+	async function getBooks() {
+		books = await bookDB.books.toArray();
+	}
+
+	onMount(() => getBooks());
+
+	const getActiveClass = (isActice: boolean) =>
+		isActice ? 'bg-primary text-primary-content bg-opacity-60' : '';
+
+	const changeActive = (i: number) => (activeIndex = i);
 </script>
 
 <svelte:head>
@@ -125,10 +139,28 @@
 			</button>
 		</div>
 	</Header>
-	<section class="flex-1">
-		<div class="text-column">
-			<p>书籍列表</p>
-		</div>
+	<section class="flex flex-col gap-4 flex-1 px-4">
+		{#each books as { title, excerpt }, index}
+			<div
+				class="w-full cursor-pointer flex gap-4 rounded p-2.5 {getActiveClass(
+					index === activeIndex
+				)}"
+				on:mouseover={() => changeActive(index)}
+			>
+				<div class="avatar">
+					<div class="w-20 rounded">
+						<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+					</div>
+				</div>
+				<div class="stat p-0 border-b">
+					<div class="stat-value text-xl ellipsis">{getFilename(title)}</div>
+					<div class="stat-title ellipsis">
+						{excerpt || '暂无摘要'}
+					</div>
+					<div class="stat-desc">21% more than last month</div>
+				</div>
+			</div>
+		{/each}
 	</section>
 </main>
 <ListAside>侧边栏</ListAside>
