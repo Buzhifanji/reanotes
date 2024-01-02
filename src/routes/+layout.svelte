@@ -1,4 +1,5 @@
 <script>
+	import Toaster from '@components/toast/toaster.svelte';
 	import { initThem } from '@config';
 	import { initLang } from '@translations';
 	import './styles.css';
@@ -8,6 +9,8 @@
 </script>
 
 <div class="app">
+	<Toaster />
+
 	<slot />
 </div>
 

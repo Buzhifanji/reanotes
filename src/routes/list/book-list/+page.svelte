@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ListAside from '@components/layout/list-aside.svelte';
 	import Header from '@components/layout/list-header.svelte';
+	import { addToast } from '@components/toast/toaster.svelte';
 	import { readChunkFile } from '@shared';
 	import { Upload } from 'lucide-svelte';
 
@@ -14,9 +15,24 @@
 		if (files.length) {
 			loading = true;
 			readChunkFile(files[0])
-				.then()
-				.catch((err) => {})
-				.finally(() => (loading = false));
+				.then((val) => {
+					console.log('val', val);
+					addToast({
+						data: {
+							title: 'Success',
+							description: 'The resource was created!',
+							color: 'info'
+						},
+						closeDelay: 0
+					});
+				})
+				.catch((err) => {
+					console.log('err', err);
+				})
+				.finally(() => {
+					loading = false;
+					fileInput!.value = '';
+				});
 		}
 	}
 
