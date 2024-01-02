@@ -29,3 +29,21 @@ export function readChunkFile(file: File, chunkSize = 10 * 1024 * 1024) {
     }
   });
 }
+
+export const isFile = (val: any): val is File => val instanceof File;
+
+export const getFilename = (fileOrPath: File | string) => {
+  if (isFile(fileOrPath)) {
+    const { name } = fileOrPath;
+    return name.substring(0, name.lastIndexOf('.'));
+  } else {
+    const lastIndexOfDots = fileOrPath.lastIndexOf('.');
+    const lastIndxOfSlash = fileOrPath.lastIndexOf('\\') + 1;
+    return fileOrPath.substring(lastIndxOfSlash, lastIndexOfDots);
+  }
+};
+
+export const getFilExtname = (fileOrPath: File | string) => {
+  const value = isFile(fileOrPath) ? fileOrPath.name : fileOrPath;
+  return value.substring(value.lastIndexOf('.') + 1);
+};

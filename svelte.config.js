@@ -24,7 +24,8 @@ const config = {
 			'@shared': 'src/shared',
 			'@components': 'src/components',
 			'@translations': 'src/translations',
-			'@config': 'src/config'
+			'@config': 'src/config',
+			'@database': 'src/database'
 		}
 	}
 };

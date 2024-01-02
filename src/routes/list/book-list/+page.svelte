@@ -2,6 +2,7 @@
 	import ListAside from '@components/layout/list-aside.svelte';
 	import Header from '@components/layout/list-header.svelte';
 	import { addToast } from '@components/toast/toaster.svelte';
+	import { bookDB } from '@database';
 	import { readChunkFile } from '@shared';
 	import { t } from '@translations';
 	import { Upload } from 'lucide-svelte';
@@ -10,14 +11,71 @@
 	const fileType = '.pdf'; // 文件类型
 	let loading = false;
 
+	async function addBook(file: File, content: Uint8Array) {
+		try {
+			const now = new Date();
+			const { name, size } = file;
+
+			const isExist = await bookDB.books.get({ title: name });
+
+			if (isExist) {
+				addToast({
+					data: {
+						title: `文件已存在：${name}`,
+						description: '请勿重复上传',
+						color: 'warning'
+					}
+				});
+				return;
+			}
+
+			const id = await bookDB.books.add({
+				title: name,
+				author: '',
+				size: size,
+				excerpt: '',
+				domain: '',
+				language: '',
+				publishTime: '',
+				publisher: '',
+				cover: '',
+				category: '',
+				progress: 0,
+				status: '',
+				lastReadPosition: '',
+				readedTime: 0,
+				createTime: now,
+				lastReadTime: now,
+				content
+			});
+
+			addToast({
+				data: {
+					title: '上传文件成功！',
+					description: name,
+					color: 'success'
+				}
+			});
+		} catch (err) {
+			addToast({
+				data: {
+					title: '上传文件失败！',
+					description: err as string,
+					color: 'error'
+				}
+			});
+		}
+	}
+
 	function fileSelected(event: Event) {
 		const target = event.target as HTMLInputElement;
 		const files = target.files!;
 		if (files.length) {
 			loading = true;
-			readChunkFile(files[0])
+			const file = files[0];
+			readChunkFile(file)
 				.then((val) => {
-					console.log('val', val);
+					addBook(file, val);
 				})
 				.catch((err) => {
 					addToast({

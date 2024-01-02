@@ -29,7 +29,7 @@ class BookDB extends Dexie {
   constructor() {
     super(superName);
     this.version(version).stores({
-      friends: '++id, title, author, size, excerpt,domain, language,publishTime,publisher,cover,category,status,progress,lastReadPosition,readedTime,createTime,lastReadTime'
+      books: '++id, &title, author, size, excerpt,domain, language,publishTime,publisher,cover,category,status,progress,lastReadPosition,readedTime,createTime,lastReadTime'
     });
   }
 }
