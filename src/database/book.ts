@@ -20,9 +20,10 @@ export interface Book {
   readedTime: number; // 累计阅读时间(分钟)
   createTime: Date;
   lastReadTime: Date; // 最后一次阅读时间
+  content: Uint8Array; // 内容
 }
 
-export class BookDB extends Dexie {
+class BookDB extends Dexie {
   books!: Table<Book>;
 
   constructor() {
