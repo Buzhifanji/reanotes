@@ -140,26 +140,28 @@
 		</div>
 	</Header>
 	<section class="flex flex-col gap-4 flex-1 px-4">
-		{#each books as { title, excerpt }, index}
-			<div
-				class="w-full cursor-pointer flex gap-4 rounded p-2.5 {getActiveClass(
-					index === activeIndex
-				)}"
-				on:mouseover={() => changeActive(index)}
-			>
-				<div class="avatar">
-					<div class="w-20 rounded">
-						<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+		{#each books as { title, excerpt, id }, index}
+			<a href="/pdf-reader/{id}">
+				<div
+					class="w-full cursor-pointer flex gap-4 rounded p-2.5 {getActiveClass(
+						index === activeIndex
+					)}"
+					on:mouseover={() => changeActive(index)}
+				>
+					<div class="avatar">
+						<div class="w-20 rounded">
+							<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+						</div>
+					</div>
+					<div class="stat p-0 border-b">
+						<div class="stat-value text-xl ellipsis">{getFilename(title)}</div>
+						<div class="stat-title ellipsis">
+							{excerpt || '暂无摘要'}
+						</div>
+						<div class="stat-desc">21% more than last month</div>
 					</div>
 				</div>
-				<div class="stat p-0 border-b">
-					<div class="stat-value text-xl ellipsis">{getFilename(title)}</div>
-					<div class="stat-title ellipsis">
-						{excerpt || '暂无摘要'}
-					</div>
-					<div class="stat-desc">21% more than last month</div>
-				</div>
-			</div>
+			</a>
 		{/each}
 	</section>
 </main>
