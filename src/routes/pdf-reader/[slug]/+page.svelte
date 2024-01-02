@@ -1,4 +1,5 @@
 <script lang="ts">
+	import CatalogBox from '@components/layout/catalog-box.svelte';
 	export let data;
 </script>
 
@@ -8,7 +9,9 @@
 </svelte:head>
 
 <main class="flex flex-row flex-1">
-	<nav>目录</nav>
+	<CatalogBox>
+		<nav>目录</nav>
+	</CatalogBox>
 	<section class="flex-1">
 		<h1>{data.slug}</h1>
 		<div class="text-column">
