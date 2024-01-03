@@ -7,5 +7,11 @@
   "setting": "organizować coś",
   "language": "język",
   "theme": "temat",
-  "readFileError": "Błąd odczytu pliku!"
+  "readFileError": "Błąd odczytu pliku!",
+  "unknown": "nieznany",
+  "upload": "wgrywać",
+  "uploadError": "Przesyłanie pliku nie powiodło się!",
+  "uploadSuccess": "Plik został przesłany pomyślnie!",
+  "fileExist": "plik już istnieje",
+  "uploadRepeat": "Proszę nie przesyłać ponownie"
 }

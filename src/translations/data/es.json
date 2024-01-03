@@ -7,5 +7,11 @@
   "setting": "configuración",
   "language": "idioma",
   "theme": "tema",
-  "readFileError": "¡Error al leer el archivo!"
+  "readFileError": "¡Error al leer el archivo!",
+  "unknown": "desconocido",
+  "upload": "subir",
+  "uploadError": "¡La carga del archivo falló!",
+  "uploadSuccess": "¡Documento cargado exitosamente!",
+  "fileExist": "El archivo ya existe",
+  "uploadRepeat": "Por favor no vuelvas a subir"
 }

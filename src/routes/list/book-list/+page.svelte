@@ -24,8 +24,8 @@
 			if (isExist) {
 				addToast({
 					data: {
-						title: `文件已存在：${name}`,
-						description: '请勿重复上传',
+						title: `${$t('lang.fileExist')}：${name}`,
+						description: $t('uploadRepeat'),
 						color: 'warning'
 					}
 				});
@@ -54,7 +54,7 @@
 
 			addToast({
 				data: {
-					title: '上传文件成功！',
+					title: $t('lang.uploadSuccess'),
 					description: name,
 					color: 'success'
 				}
@@ -62,7 +62,7 @@
 		} catch (err) {
 			addToast({
 				data: {
-					title: '上传文件失败！',
+					title: $t('lang.uploadError'),
 					description: err as string,
 					color: 'error'
 				}
@@ -135,7 +135,7 @@
 					accept={fileType}
 				/>
 				<Upload class="w-5 h-5" />
-				<span>上传</span>
+				<span>{$t('lang.upload')}</span>
 			</button>
 		</div>
 	</Header>
@@ -156,7 +156,7 @@
 					<div class="stat p-0 border-b">
 						<div class="stat-value text-xl ellipsis">{getFilename(title)}</div>
 						<div class="stat-title ellipsis">
-							{excerpt || '暂无摘要'}
+							{excerpt || `【${$t('lang.unknown')}】`}
 						</div>
 						<div class="stat-desc">21% more than last month</div>
 					</div>

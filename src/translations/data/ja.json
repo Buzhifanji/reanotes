@@ -7,5 +7,11 @@
   "setting": "設定",
   "language": "言語",
   "theme": "テーマ",
-  "readFileError": "ファイルの読み取り中にエラーが発生しました!"
+  "readFileError": "ファイルの読み取り中にエラーが発生しました!",
+  "unknown": "未知",
+  "upload": "アップロード",
+  "uploadError": "ファイルのアップロードに失敗しました!",
+  "uploadSuccess": "ファイルが正常にアップロードされました！",
+  "fileExist": "ファイルが既に存在します",
+  "uploadRepeat": "再度アップロードしないでください"
 }

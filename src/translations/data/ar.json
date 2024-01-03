@@ -7,5 +7,11 @@
   "setting": "يثبت",
   "language": "لغة",
   "theme": "سمة",
-  "readFileError": "خطأ في قراءة الملف!"
+  "readFileError": "خطأ في قراءة الملف!",
+  "unknown": "مجهول",
+  "upload": "رفع",
+  "uploadError": "فشل تحميل الملف!",
+  "uploadSuccess": "تم رفع الملف بنجاح!",
+  "fileExist": "الملف موجود بالفعل",
+  "uploadRepeat": "يرجى عدم التحميل مرة أخرى"
 }

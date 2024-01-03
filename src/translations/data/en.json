@@ -7,5 +7,11 @@
   "setting": "set up",
   "language": "language",
   "theme": "theme",
-  "readFileError": "Error reading file!"
+  "readFileError": "Error reading file!",
+  "unknown": "unknown",
+  "upload": "upload",
+  "uploadError": "File upload failed!",
+  "uploadSuccess": "File uploaded successfully!",
+  "fileExist": "File already exists",
+  "uploadRepeat": "Please do not upload again"
 }

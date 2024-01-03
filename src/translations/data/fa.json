@@ -7,5 +7,11 @@
   "setting": "برپایی",
   "language": "زبان",
   "theme": "موضوع",
-  "readFileError": "خطا در خواندن فایل!"
+  "readFileError": "خطا در خواندن فایل!",
+  "unknown": "ناشناخته",
+  "upload": "بارگذاری",
+  "uploadError": "آپلود فایل انجام نشد!",
+  "uploadSuccess": "فایل با موفقیت آپلود شد!",
+  "fileExist": "فایل از قبل موجود میباشد",
+  "uploadRepeat": "لطفا دیگر آپلود نکنید"
 }

@@ -7,5 +7,11 @@
   "setting": "sediakan",
   "language": "bahasa",
   "theme": "tema",
-  "readFileError": "Ralat membaca fail!"
+  "readFileError": "Ralat membaca fail!",
+  "unknown": "tidak diketahui",
+  "upload": "muat naik",
+  "uploadError": "Muat naik fail gagal!",
+  "uploadSuccess": "Fail berjaya dimuat naik!",
+  "fileExist": "Fail sudah wujud",
+  "uploadRepeat": "Tolong jangan muat naik lagi"
 }

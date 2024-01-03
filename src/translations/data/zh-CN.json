@@ -7,5 +7,11 @@
   "setting": "设置",
   "language": "语言",
   "theme": "主题",
-  "readFileError": "读取文件错误！"
+  "readFileError": "读取文件错误！",
+  "unknown": "未知",
+  "upload": "上传",
+  "uploadError": "上传文件失败！",
+  "uploadSuccess": "上传文件成功！",
+  "fileExist": "文件已存在",
+  "uploadRepeat": "请勿重复上传"
 }

@@ -7,5 +7,10 @@
   "setting": "mempersiapkan",
   "language": "bahasa",
   "theme": "tema",
-  "readFileError": "Kesalahan saat membaca berkas!"
+  "readFileError": "Kesalahan saat membaca berkas!",
+  "unknown": "tidak dikenal",
+  "upload": "mengunggah",
+  "uploadSuccess": "Berkas berhasil diunggah!",
+  "fileExist": "Berkas sudah ada",
+  "uploadRepeat": "Tolong jangan upload lagi"
 }

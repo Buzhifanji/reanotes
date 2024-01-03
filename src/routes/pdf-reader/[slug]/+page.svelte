@@ -100,9 +100,7 @@
 		linkService.setDocument(pdfDoc, null);
 
 		// 监听 页面渲染完成，通知上层绘制笔记内容
-		eventBus.on('textlayerrendered', (value: any) => {
-			console.log('kkkkkkkkk');
-		});
+		eventBus.on('textlayerrendered', (value: any) => {});
 
 		eventBus.on('pagesloaded', () => {
 			// view.currentScale = SCALE.value
@@ -110,7 +108,6 @@
 	}
 
 	async function jump(val: any) {
-		console.log('va', val.detail);
 		// 获取目标页面的页码
 		const pageNumber = (await pdfDoc.getPageIndex(val.detail.dest[0])) + 1;
 		pdfView.scrollPageIntoView({ pageNumber });
@@ -141,7 +138,6 @@
 	onMount(async () => {
 		await getBookContent();
 		await renderPDF();
-		console.log(book);
 	});
 </script>
 

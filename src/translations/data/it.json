@@ -7,5 +7,11 @@
   "setting": "impostare",
   "language": "lingua",
   "theme": "tema",
-  "readFileError": "Errore durante la lettura del file!"
+  "readFileError": "Errore durante la lettura del file!",
+  "unknown": "sconosciuto",
+  "upload": "caricamento",
+  "uploadError": "Caricamento file non riuscito!",
+  "uploadSuccess": "Il file è stato caricato con successo!",
+  "fileExist": "Il file esiste già",
+  "uploadRepeat": "Si prega di non caricare nuovamente"
 }

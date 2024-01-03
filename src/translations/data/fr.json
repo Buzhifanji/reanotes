@@ -7,5 +7,11 @@
   "setting": "installation",
   "language": "langue",
   "theme": "thème",
-  "readFileError": "Erreur de lecture du fichier !"
+  "readFileError": "Erreur de lecture du fichier !",
+  "unknown": "inconnu",
+  "upload": "télécharger",
+  "uploadError": "Le téléchargement du fichier a échoué !",
+  "uploadSuccess": "Fichier téléchargé avec succès !",
+  "fileExist": "Le fichier existe déjà",
+  "uploadRepeat": "S'il vous plaît, ne téléchargez plus"
 }
