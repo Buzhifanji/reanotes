@@ -32,6 +32,7 @@
 				});
 				return;
 			}
+
 			await addBook({ title: name, size, content });
 
 			addToast({

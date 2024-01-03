@@ -24,6 +24,7 @@ export async function addBook({ title, size, content }: AddBook) {
     progress: 0,
     status: '',
     lastReadPosition: '',
+    sourceURL: '',
     readedTime: 0,
     createTime: now,
     lastReadTime: now,

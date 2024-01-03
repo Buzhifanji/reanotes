@@ -16,6 +16,7 @@ export interface Book {
   category: string; // 类别
   status: string; // 状态
   progress: number; // 阅读进度(百分比)
+  sourceURL: string; // 源文件URL
   lastReadPosition: string; // 最后一次阅读位置
   readedTime: number; // 累计阅读时间(分钟)
   createTime: Date;
@@ -29,7 +30,7 @@ class BookDB extends Dexie {
   constructor() {
     super(superName);
     this.version(version).stores({
-      books: '++id, &title, author, size, excerpt,domain, language,publishTime,publisher,cover,category,status,progress,lastReadPosition,readedTime,createTime,lastReadTime'
+      books: '++id, &title, author, size, excerpt,domain, language,publishTime,publisher,cover,category,status,progress,lastReadPosition,readedTime,createTime,lastReadTime,sourceURL'
     });
   }
 }
