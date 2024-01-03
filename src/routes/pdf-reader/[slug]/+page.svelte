@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
+	import { GlobalWorkerOptions, getDocument, type PDFDocumentProxy } from 'pdfjs-dist';
 	GlobalWorkerOptions.workerSrc = '../node_modules/pdfjs-dist/build/pdf.worker.js';
 </script>
 
@@ -9,7 +9,7 @@
 	import Catalog from '@components/tree/catalog.svelte';
 	import { bookDB, type Book } from '@database';
 	import { createTreeView } from '@melt-ui/svelte';
-	import { getEleById, isArray, isObj } from '@shared';
+	import { getEleById } from '@shared';
 	import { locale } from '@translations';
 	import {
 		EventBus,
@@ -19,6 +19,7 @@
 		PDFViewer
 	} from 'pdfjs-dist/web/pdf_viewer';
 	import { onMount, setContext } from 'svelte';
+	import { formatePdfCatalog } from './catalog';
 	import './viewer.css';
 
 	const BOX = 'pdf-container';
@@ -27,6 +28,8 @@
 	export let data;
 	let book: Book;
 	let catalog: any[] = [];
+	let pdfDoc: PDFDocumentProxy;
+	let pdfView: PDFViewer;
 
 	const ctx = createTreeView({});
 	setContext('tree', ctx);
@@ -62,7 +65,7 @@
 
 		const l10n = new GenericL10n(locale.get());
 
-		const view = new PDFViewer({
+		pdfView = new PDFViewer({
 			container: container,
 			eventBus,
 			linkService,
@@ -70,25 +73,25 @@
 			l10n
 		});
 
-		view.currentScale = 1 * window.devicePixelRatio;
+		pdfView.currentScale = 1 * window.devicePixelRatio;
 
-		linkService.setViewer(view);
+		linkService.setViewer(pdfView);
 
 		const loadingTask = getDocument(book.content);
 
-		const pdfDocument = await loadingTask.promise;
+		pdfDoc = await loadingTask.promise;
 
-		const outline = await pdfDocument.getOutline();
+		const outline = await pdfDoc.getOutline();
 
-		const metadata = await pdfDocument.getMetadata();
+		const metadata = await pdfDoc.getMetadata();
 
 		catalog = formatePdfCatalog(outline);
 
 		console.log(catalog);
 
-		view.setDocument(pdfDocument);
+		pdfView.setDocument(pdfDoc);
 
-		linkService.setDocument(pdfDocument, null);
+		linkService.setDocument(pdfDoc, null);
 
 		// 监听 页面渲染完成，通知上层绘制笔记内容
 		eventBus.on('textlayerrendered', (value: any) => {
@@ -100,39 +103,18 @@
 		});
 	}
 
+	async function jump(val: any) {
+		console.log('va', val.detail);
+		// 获取目标页面的页码
+		const pageNumber = (await pdfDoc.getPageIndex(val.detail.dest[0])) + 1;
+		pdfView.scrollPageIntoView({ pageNumber });
+	}
+
 	onMount(async () => {
 		await getBookContent();
 		await renderPDF();
 		console.log(book);
-		// console.log('pdfjs', pdfjs);
 	});
-
-	function handleId(val: any) {
-		if (isArray<any>(val)) {
-			return val.reduce((acc, cur) => {
-				const temp = isObj(cur) ? JSON.stringify(val) : cur;
-				return acc + temp;
-			}, '');
-		} else {
-			return val.toString();
-		}
-	}
-
-	function formatePdfCatalog(list: any) {
-		if (!list) return [];
-
-		// 处理 没有目录的特殊情况
-		if (list.length === 1 && list[0].title === '目录') {
-			return [];
-		}
-
-		list.forEach((item: any) => {
-			item.id = handleId(item.dest);
-			item.children = formatePdfCatalog(item.items);
-		});
-
-		return list;
-	}
 </script>
 
 <svelte:head>
@@ -143,11 +125,11 @@
 <main class="flex flex-row flex-1">
 	<CatalogBox>
 		<ul class="menu" {...$tree}>
-			<Catalog treeItems={catalog} />
+			<Catalog treeItems={catalog} on:click={jump} />
 		</ul>
 	</CatalogBox>
 	<section class="flex-1 relative">
-		<div id={BOX} class="h-full w-full absolute overflow-auto">
+		<div id={BOX} class="h-full w-full absolute overflow-auto scroll-smooth">
 			<div id={VIEW} class="scrollWrapped pdfViewer" style="--page-border: 0;"></div>
 		</div>
 	</section>
