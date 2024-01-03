@@ -13,3 +13,8 @@ export const concatUint8Array = (buf1: Uint8Array, buf2: Uint8Array) => {
   result.set(buf2, buf1.length);
   return result;
 }
+
+export const isArray = <T>(val: any): val is Array<T> => Array.isArray(val);
+
+export const isObj = (val: any): val is object =>
+  Object.prototype.toString.call(val) === '[object Object]';

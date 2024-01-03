@@ -10,7 +10,7 @@
 	initThem();
 </script>
 
-<div class="app">
+<div class="app bg-base-100 text-base-content">
 	<Toaster />
 	<RouterTransition>
 		<slot />

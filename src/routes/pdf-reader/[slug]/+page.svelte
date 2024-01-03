@@ -6,8 +6,10 @@
 <script lang="ts">
 	import CatalogBox from '@components/layout/catalog-box.svelte';
 	import { addToast } from '@components/toast/toaster.svelte';
+	import Catalog from '@components/tree/catalog.svelte';
 	import { bookDB, type Book } from '@database';
-	import { getEleById } from '@shared';
+	import { createTreeView } from '@melt-ui/svelte';
+	import { getEleById, isArray, isObj } from '@shared';
 	import { locale } from '@translations';
 	import {
 		EventBus,
@@ -16,7 +18,7 @@
 		PDFLinkService,
 		PDFViewer
 	} from 'pdfjs-dist/web/pdf_viewer';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import './viewer.css';
 
 	const BOX = 'pdf-container';
@@ -24,6 +26,13 @@
 
 	export let data;
 	let book: Book;
+	let catalog: any[] = [];
+
+	const ctx = createTreeView({});
+	setContext('tree', ctx);
+	const {
+		elements: { tree }
+	} = ctx;
 
 	async function getBookContent() {
 		const val = await bookDB.books.get(+data.slug);
@@ -73,6 +82,10 @@
 
 		const metadata = await pdfDocument.getMetadata();
 
+		catalog = formatePdfCatalog(outline);
+
+		console.log(catalog);
+
 		view.setDocument(pdfDocument);
 
 		linkService.setDocument(pdfDocument, null);
@@ -93,6 +106,33 @@
 		console.log(book);
 		// console.log('pdfjs', pdfjs);
 	});
+
+	function handleId(val: any) {
+		if (isArray<any>(val)) {
+			return val.reduce((acc, cur) => {
+				const temp = isObj(cur) ? JSON.stringify(val) : cur;
+				return acc + temp;
+			}, '');
+		} else {
+			return val.toString();
+		}
+	}
+
+	function formatePdfCatalog(list: any) {
+		if (!list) return [];
+
+		// 处理 没有目录的特殊情况
+		if (list.length === 1 && list[0].title === '目录') {
+			return [];
+		}
+
+		list.forEach((item: any) => {
+			item.id = handleId(item.dest);
+			item.children = formatePdfCatalog(item.items);
+		});
+
+		return list;
+	}
 </script>
 
 <svelte:head>
@@ -102,7 +142,9 @@
 
 <main class="flex flex-row flex-1">
 	<CatalogBox>
-		<nav>目录</nav>
+		<ul class="menu" {...$tree}>
+			<Catalog treeItems={catalog} />
+		</ul>
 	</CatalogBox>
 	<section class="flex-1 relative">
 		<div id={BOX} class="h-full w-full absolute overflow-auto">

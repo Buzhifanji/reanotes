@@ -12,10 +12,16 @@
 	-moz-text-size-adjust: none;
 	text-size-adjust: none;
 	forced-color-adjust: none;
+	/* --tw-bg-opacity: 1;
+	background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
+	--tw-text-opacity: 1;
+	color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity))); */
 }
 
 .textLayer span,
 .textLayer br {
+	/* --tw-bg-opacity: 1;
+	color: var(--fallback-bc, oklch(var(--bc) / var(--tw-text-opacity))); */
 	color: transparent;
 	position: absolute;
 	white-space: pre;
@@ -1002,7 +1008,8 @@
 	--doorhanger-icon-opacity: 0.9;
 
 	--main-color: rgba(12, 12, 13, 1);
-	--body-bg-color: rgba(237, 237, 240, 1);
+	--tw-bg-opacity: 1;
+	--body-bg-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
 	--errorWrapper-bg-color: rgba(255, 110, 110, 1);
 	--progressBar-percent: 0%;
 	--progressBar-end-offset: 0;
