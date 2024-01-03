@@ -22,10 +22,10 @@
 {#each treeItems as { id, title, children }, i}
 	{@const hasChildren = !!children?.length}
 
-	<li class={level !== 1 ? 'pl-4' : ''}>
+	<li>
 		<a
 			{...$item({
-				id: id.toString(),
+				id,
 				hasChildren
 			})}
 			use:item>{title}</a
