@@ -2,6 +2,7 @@
 	import Toaster from '@components/toast/toaster.svelte';
 	import RouterTransition from '@components/transition/router.svelte';
 	import { initThem } from '@config';
+	import '@config/dayjs';
 	import { initLang } from '@translations';
 
 	import './styles.css';

@@ -1,9 +1,19 @@
 <script lang="ts">
 	import type { Book } from '@database';
 	import { getFilExtname, getFilename } from '@shared';
+	import dayjs from 'dayjs';
 	import Li from './li.svelte';
 
 	export let book: Book;
+
+	function formatTime(val: string | Date, template = 'LL'): string {
+		if (val) {
+			const res = dayjs(val).format(template);
+			return (res === 'Invalid Date' ? val : res) as string;
+		} else {
+			return '未知';
+		}
+	}
 </script>
 
 {#if book}
@@ -28,7 +38,7 @@
 		/>
 		<Li label="类型" value={getFilExtname(book.title).toLocaleUpperCase()} />
 		<Li label="发布时间" value="PDF" />
-		<Li label="上传时间" value={book.createTime} />
+		<Li label="上传时间" value={formatTime(book.createTime)} />
 		<Li label="上次阅读时间" value="PDF" />
 		<Li label="出版社" value="PDF" />
 		<Li label="字数" value="PDF" />

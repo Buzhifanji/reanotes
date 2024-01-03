@@ -19,6 +19,7 @@ Object.entries(translations).map(([path, value]) => {
   list.push({ name: item.__name, code: item.__code, direction: item.__direction })
 
   const localeFileName = subString(path, "/data/", ".json")
+
   fileNames.push(localeFileName)
 })
 
