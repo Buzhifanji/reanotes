@@ -4,6 +4,7 @@
 </script>
 
 <script lang="ts">
+	import BookInfo from '@components/book/info.svelte';
 	import CatalogBox from '@components/layout/catalog-box.svelte';
 	import { addToast } from '@components/toast/toaster.svelte';
 	import Catalog from '@components/tree/catalog.svelte';
@@ -32,6 +33,7 @@
 	let catalog: any[] = [];
 	let pdfDoc: PDFDocumentProxy;
 	let pdfView: PDFViewer;
+	let activeTab = 0;
 
 	const ctx = createTreeView({});
 	setContext('tree', ctx);
@@ -87,6 +89,8 @@
 
 		const metadata = await pdfDoc.getMetadata();
 
+		console.log(metadata);
+
 		catalog = formatePdfCatalog(outline);
 
 		console.log(catalog);
@@ -130,6 +134,10 @@
 		}
 	}
 
+	const tabs = ['信息', '笔记'];
+
+	const changTab = (val: number) => (activeTab = val);
+
 	onMount(async () => {
 		await getBookContent();
 		await renderPDF();
@@ -153,5 +161,19 @@
 			<div id={VIEW} class="scrollWrapped pdfViewer" style="--page-border: 0;"></div>
 		</div>
 	</section>
-	<aside class="w-72">侧边栏</aside>
+	<aside class="w-72 lg:w-96 flex flex-col">
+		<div role="tablist" class="tabs tabs-boxed">
+			{#each tabs as item, i}
+				<a
+					role="tab"
+					tabindex={i}
+					class="tab {i === activeTab ? 'tab-active' : ''}"
+					on:click={() => changTab(i)}>{item}</a
+				>
+			{/each}
+		</div>
+		<div class="flex-1 overflow-y-auto no-scrollbar">
+			<BookInfo {book} />
+		</div>
+	</aside>
 </main>
