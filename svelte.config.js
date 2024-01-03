@@ -25,7 +25,8 @@ const config = {
 			'@components': 'src/components',
 			'@translations': 'src/translations',
 			'@config': 'src/config',
-			'@database': 'src/database'
+			'@database': 'src/database',
+			'@api': 'src/api'
 		}
 	}
 };

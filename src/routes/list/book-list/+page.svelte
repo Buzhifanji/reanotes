@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { addBook, findBookByTitle } from '@api';
 	import ListAside from '@components/layout/list-aside.svelte';
 	import Header from '@components/layout/list-header.svelte';
 	import { addToast } from '@components/toast/toaster.svelte';
@@ -15,12 +16,11 @@
 	let isLoadBooks = true;
 	let activeIndex = 0;
 
-	async function addBook(file: File, content: Uint8Array) {
+	async function addBookAction(file: File, content: Uint8Array) {
 		try {
-			const now = new Date();
 			const { name, size } = file;
 
-			const isExist = await bookDB.books.get({ title: name });
+			const isExist = await findBookByTitle(name);
 
 			if (isExist) {
 				addToast({
@@ -32,26 +32,7 @@
 				});
 				return;
 			}
-
-			const id = await bookDB.books.add({
-				title: name,
-				author: '',
-				size: size,
-				excerpt: '',
-				domain: '',
-				language: '',
-				publishTime: '',
-				publisher: '',
-				cover: '',
-				category: '',
-				progress: 0,
-				status: '',
-				lastReadPosition: '',
-				readedTime: 0,
-				createTime: now,
-				lastReadTime: now,
-				content
-			});
+			await addBook({ title: name, size, content });
 
 			addToast({
 				data: {
@@ -79,7 +60,7 @@
 			const file = files[0];
 			readChunkFile(file)
 				.then((val) => {
-					addBook(file, val);
+					addBookAction(file, val);
 				})
 				.catch((err) => {
 					addToast({
