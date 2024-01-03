@@ -24,6 +24,8 @@
 
 	const BOX = 'pdf-container';
 	const VIEW = 'pdf-viewer';
+	const minScale = 0.1;
+	const maxScale = 4;
 
 	export let data;
 	let book: Book;
@@ -110,6 +112,24 @@
 		pdfView.scrollPageIntoView({ pageNumber });
 	}
 
+	function zoomIn() {
+		let scale = pdfView.currentScale;
+		if (scale < maxScale) {
+			scale = scale + 0.1;
+			scale = scale > maxScale ? maxScale : scale;
+			pdfView.currentScale = scale;
+		}
+	}
+
+	function zoomOut() {
+		let scale = pdfView.currentScale;
+		if (scale > minScale) {
+			scale = scale - 0.1;
+			scale = scale < 0.1 ? 0.1 : scale;
+			pdfView.currentScale = scale;
+		}
+	}
+
 	onMount(async () => {
 		await getBookContent();
 		await renderPDF();
@@ -123,7 +143,7 @@
 </svelte:head>
 
 <main class="flex flex-row flex-1">
-	<CatalogBox>
+	<CatalogBox on:zoomIn={zoomIn} on:zoomOut={zoomOut}>
 		<ul class="menu" {...$tree}>
 			<Catalog treeItems={catalog} on:click={jump} />
 		</ul>
