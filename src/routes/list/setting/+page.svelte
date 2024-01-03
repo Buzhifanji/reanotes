@@ -10,7 +10,7 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="w-full h-screen">
+<div class="w-full flex flex-col overflow-hidden">
 	<Header>
 		<h4 class="w-full text-center font-bold">{$t('lang.setting')}</h4>
 	</Header>
