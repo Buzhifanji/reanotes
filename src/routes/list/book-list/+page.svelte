@@ -12,6 +12,7 @@
 	const fileType = '.pdf'; // 文件类型
 	let loading = false;
 	let books: Book[] = [];
+	let isLoadBooks = true;
 	let activeIndex = 0;
 
 	async function addBook(file: File, content: Uint8Array) {
@@ -102,7 +103,9 @@
 	}
 
 	async function getBooks() {
+		isLoadBooks = true;
 		books = await bookDB.books.toArray();
+		isLoadBooks = false;
 	}
 
 	onMount(() => getBooks());
@@ -139,30 +142,45 @@
 			</button>
 		</div>
 	</Header>
-	<section class="flex flex-col gap-4 flex-1 px-4">
-		{#each books as { title, excerpt, id }, index}
-			<a href="/pdf-reader/{id}">
-				<div
-					class="w-full cursor-pointer flex gap-4 rounded p-2.5 {getActiveClass(
-						index === activeIndex
-					)}"
-					on:mouseover={() => changeActive(index)}
-				>
-					<div class="avatar">
-						<div class="w-20 rounded">
-							<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+	<section class="flex flex-col gap-4 flex-1 px-4 {isLoadBooks ? 'overflow-hidden' : ''}">
+		{#if isLoadBooks}
+			<div class="flex flex-col gap-4">
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+				<div class="skeleton w-full h-28"></div>
+			</div>
+		{:else}
+			{#each books as { title, excerpt, id }, index}
+				<a href="/pdf-reader/{id}">
+					<div
+						class="w-full cursor-pointer flex gap-4 rounded p-2.5 {getActiveClass(
+							index === activeIndex
+						)}"
+						on:mouseover={() => changeActive(index)}
+					>
+						<div class="avatar">
+							<div class="w-20 rounded">
+								<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+							</div>
+						</div>
+						<div class="stat p-0 border-b">
+							<div class="stat-value text-xl ellipsis">{getFilename(title)}</div>
+							<div class="stat-title ellipsis">
+								{excerpt || `【${$t('lang.unknown')}】`}
+							</div>
+							<div class="stat-desc">21% more than last month</div>
 						</div>
 					</div>
-					<div class="stat p-0 border-b">
-						<div class="stat-value text-xl ellipsis">{getFilename(title)}</div>
-						<div class="stat-title ellipsis">
-							{excerpt || `【${$t('lang.unknown')}】`}
-						</div>
-						<div class="stat-desc">21% more than last month</div>
-					</div>
-				</div>
-			</a>
-		{/each}
+				</a>
+			{/each}
+		{/if}
 	</section>
 </main>
 <ListAside>侧边栏</ListAside>
